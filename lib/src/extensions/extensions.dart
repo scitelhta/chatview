@@ -80,6 +80,7 @@ extension ValidateString on String {
       child: CircleAvatar(
         radius: profileCircleRadius ?? 8,
         backgroundImage:
+          //AssetImage(getChatUser(this)?.profilePhoto ?? profileImage)
             NetworkImage(getChatUser(this)?.profilePhoto ?? profileImage),
       ),
     );
