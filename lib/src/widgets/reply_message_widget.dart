@@ -105,7 +105,8 @@ class ReplyMessageWidget extends StatelessWidget {
                                   80,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: NetworkImage(replyMessage),
+                                  image: NetworkImage
+                                    (replyMessage),
                                   fit: BoxFit.fill,
                                 ),
                                 borderRadius:
@@ -134,13 +135,13 @@ class ReplyMessageWidget extends StatelessWidget {
                                   ? Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(
+                                  /*      Icon(
                                           Icons.mic,
                                           color: repliedMessageConfig
                                                   ?.micIconColor ??
                                               Colors.white,
                                         ),
-                                        const SizedBox(width: 2),
+                                        const SizedBox(width: 2),*/
                                         if (message.replyMessage
                                                 .voiceMessageDuration !=
                                             null)

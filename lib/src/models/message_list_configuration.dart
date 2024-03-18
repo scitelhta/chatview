@@ -29,7 +29,8 @@ class ChatBackgroundConfiguration {
   final Color? backgroundColor;
 
   /// Provides background image of chat view.
-  final String? backgroundImage;
+  //final String? backgroundImage;
+  final ImageProvider? backgroundImage;
 
   /// Provides padding of chat view.
   final EdgeInsetsGeometry? padding;

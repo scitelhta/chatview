@@ -19,6 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+import 'package:flutter/cupertino.dart';
+
 class ChatUser {
   /// Provides id of user.
   final String id;
@@ -27,7 +29,8 @@ class ChatUser {
   final String name;
 
   /// Provides profile picture URL of user.
-  final String? profilePhoto;
+  //final String? profilePhoto;
+  final ImageProvider? profilePhoto;
 
   ChatUser({
     required this.id,

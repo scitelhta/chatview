@@ -108,6 +108,11 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
         defaultTargetPlatform == TargetPlatform.android) {
       controller = RecorderController();
     }
+    Timer.periodic(Duration(milliseconds: 100), (r) {
+      if (widget.focusNode.canRequestFocus) {
+        widget.focusNode.requestFocus();
+      }
+    });
   }
 
   @override
@@ -165,6 +170,7 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
               else
                 Expanded(
                   child: TextField(
+                    autofocus: true,
                     focusNode: widget.focusNode,
                     controller: widget.textEditingController,
                     style: textFieldConfig?.textStyle ??
@@ -174,6 +180,11 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
                     keyboardType: textFieldConfig?.textInputType,
                     inputFormatters: textFieldConfig?.inputFormatters,
                     onChanged: _onChanged,
+                    onSubmitted: (r){
+                      debugPrint("subim $r");
+                      widget.onPressed();
+                      widget.focusNode.requestFocus();
+                    },
                     textCapitalization: textFieldConfig?.textCapitalization ??
                         TextCapitalization.sentences,
                     decoration: InputDecoration(

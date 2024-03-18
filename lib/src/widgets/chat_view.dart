@@ -192,7 +192,8 @@ class _ChatViewState extends State<ChatView>
           image: chatBackgroundConfig.backgroundImage != null
               ? DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage(chatBackgroundConfig.backgroundImage!),
+                  image: //NetworkImage
+                    (chatBackgroundConfig.backgroundImage!),
                 )
               : null,
         ),

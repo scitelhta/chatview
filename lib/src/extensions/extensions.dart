@@ -81,7 +81,8 @@ extension ValidateString on String {
         radius: profileCircleRadius ?? 8,
         backgroundImage:
           //AssetImage(getChatUser(this)?.profilePhoto ?? profileImage)
-            NetworkImage(getChatUser(this)?.profilePhoto ?? profileImage),
+          //  NetworkImage
+        (getChatUser(this)?.profilePhoto ?? profileImage),
       ),
     );
   }

@@ -28,7 +28,8 @@ class ProfileCircleConfiguration {
   final EdgeInsetsGeometry? padding;
 
   /// Provides image url of user
-  final String? profileImageUrl;
+  //final String? profileImageUrl;
+  final ImageProvider ? profileImageUrl;
 
   /// Used for give bottom padding to profile circle
   final double? bottomPadding;

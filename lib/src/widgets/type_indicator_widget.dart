@@ -40,7 +40,7 @@ class TypingIndicator extends StatefulWidget {
   final bool showIndicator;
 
   /// Represents profile picture url of user.
-  final String? profilePic;
+  final ImageProvider? profilePic;
 
   /// Provides configurations related to chat bubble such as padding, margin, max
   /// width etc.

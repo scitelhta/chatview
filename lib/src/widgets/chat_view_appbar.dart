@@ -54,7 +54,8 @@ class ChatViewAppBar extends StatelessWidget {
   final String? userStatus;
 
   /// Allow user to change profile picture in appbar.
-  final String? profilePicture;
+  //final String? profilePicture;
+  final ImageProvider?profilePicture;
 
   /// Allow user to change text style of chat title.
   final TextStyle? chatTitleTextStyle;
@@ -114,7 +115,8 @@ class ChatViewAppBar extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: CircleAvatar(
-                          backgroundImage: NetworkImage(profilePicture!)),
+                          backgroundImage:// NetworkImage
+                            (profilePicture!)),
                     ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

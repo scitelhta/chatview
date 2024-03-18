@@ -244,10 +244,10 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
   Widget get _voiceReplyMessageView {
     return Row(
       children: [
-        Icon(
+        /*Icon(
           Icons.mic,
           color: widget.sendMessageConfig?.micIconColor,
-        ),
+        ),*/
         const SizedBox(width: 4),
         if (replyMessage.voiceMessageDuration != null)
           Text(

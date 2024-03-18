@@ -37,7 +37,7 @@ class ProfileCircle extends StatelessWidget {
   final double bottomPadding;
 
   /// Allow user to pass image url of user's profile picture.
-  final String? imageUrl;
+  final ImageProvider? imageUrl;
 
   /// Allow user to set whole padding of profile circle view.
   final EdgeInsetsGeometry? profileCirclePadding;
@@ -61,7 +61,8 @@ class ProfileCircle extends StatelessWidget {
         onTap: onTap,
         child: CircleAvatar(
           radius: circleRadius ?? 16,
-          backgroundImage: NetworkImage(imageUrl ?? profileImage),
+          backgroundImage: //NetworkImage
+            (imageUrl ?? profileImage),
         ),
       ),
     );
