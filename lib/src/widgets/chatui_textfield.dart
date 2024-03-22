@@ -108,9 +108,9 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
         defaultTargetPlatform == TargetPlatform.android) {
       controller = RecorderController();
     }
-    Timer.periodic(Duration(milliseconds: 100), (r) {
+    Timer.periodic(Duration(milliseconds: 10000), (r) {
       if (widget.focusNode.canRequestFocus) {
-        //widget.focusNode.requestFocus();
+        widget.focusNode.requestFocus();
       }
     });
   }
