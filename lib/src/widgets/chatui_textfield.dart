@@ -110,7 +110,7 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
     }
     Timer.periodic(Duration(milliseconds: 100), (r) {
       if (widget.focusNode.canRequestFocus) {
-        widget.focusNode.requestFocus();
+        //widget.focusNode.requestFocus();
       }
     });
   }
@@ -182,7 +182,7 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
                     onChanged: _onChanged,
                     onSubmitted: (r){
                       debugPrint("subim $r");
-                      widget.onPressed();
+                      //widget.onPressed();
                       widget.focusNode.requestFocus();
                     },
                     textCapitalization: textFieldConfig?.textCapitalization ??
@@ -216,7 +216,30 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
                 valueListenable: _inputText,
                 builder: (_, inputTextValue, child) {
                   if (inputTextValue.isNotEmpty) {
-                    return IconButton(
+                    return
+
+                      Row(children:[
+
+                        //Text("i"),
+                        if (sendMessageConfig?.enableGalleryImagePicker ??
+                            true)
+                          IconButton(
+                            constraints: const BoxConstraints(),
+                            onPressed: () => _onIconPressed(
+                              ImageSource.gallery,
+                              config:
+                              sendMessageConfig?.imagePickerConfiguration,
+                            ),
+                            icon: imagePickerIconsConfig
+                                ?.galleryImagePickerIcon ??
+                                Icon(
+                                  Icons.image,
+                                  color: imagePickerIconsConfig
+                                      ?.galleryIconColor,
+                                ),
+                          ),
+
+                      IconButton(
                       color: sendMessageConfig?.defaultSendButtonColor ??
                           Colors.green,
                       onPressed: () {
@@ -225,28 +248,17 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
                       },
                       icon: sendMessageConfig?.sendButtonIcon ??
                           const Icon(Icons.send),
-                    );
+                    )
+                    ]);
                   } else {
                     return Row(
                       children: [
+
+
                         if (!isRecordingValue) ...[
-                          if (sendMessageConfig?.enableCameraImagePicker ??
-                              true)
-                            IconButton(
-                              constraints: const BoxConstraints(),
-                              onPressed: () => _onIconPressed(
-                                ImageSource.camera,
-                                config:
-                                    sendMessageConfig?.imagePickerConfiguration,
-                              ),
-                              icon: imagePickerIconsConfig
-                                      ?.cameraImagePickerIcon ??
-                                  Icon(
-                                    Icons.camera_alt_outlined,
-                                    color:
-                                        imagePickerIconsConfig?.cameraIconColor,
-                                  ),
-                            ),
+
+
+
                           if (sendMessageConfig?.enableGalleryImagePicker ??
                               true)
                             IconButton(
@@ -331,11 +343,13 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
   }
 
   void _onChanged(String inputText) {
+
     debouncer.run(() {
       composingStatus.value = TypeWriterStatus.typed;
     }, () {
       composingStatus.value = TypeWriterStatus.typing;
     });
     _inputText.value = inputText;
+    widget.onPressed();
   }
 }

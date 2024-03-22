@@ -30,6 +30,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import '../utils/constants/constants.dart';
+import 'package:flutter/services.dart';
 
 class SendMessageWidget extends StatefulWidget {
   const SendMessageWidget({
@@ -41,7 +42,10 @@ class SendMessageWidget extends StatefulWidget {
     this.sendMessageBuilder,
     this.onReplyCallback,
     this.onReplyCloseCallback,
+    this.ctrlEnter=false,
   }) : super(key: key);
+
+  final bool ctrlEnter ;
 
   /// Provides call back when user tap on send button on text field.
   final StringMessageCallBack onSendTap;
@@ -303,15 +307,24 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
   }
 
   void _onPressed() {
+    bool ctrl = RawKeyboard.instance.keysPressed.contains(LogicalKeyboardKey.controlLeft);
+
+    debugPrint("presed ${_textEditingController.text} $ctrl, ${widget.ctrlEnter}");
+
     if (_textEditingController.text.isNotEmpty &&
-        !_textEditingController.text.startsWith('\n')) {
-      widget.onSendTap.call(
-        _textEditingController.text.trim(),
-        replyMessage,
-        MessageType.text,
-      );
-      _assignRepliedMessage();
-      _textEditingController.clear();
+        !_textEditingController.text.startsWith('\n') &&
+    _textEditingController.text.endsWith('\n')
+    ) {
+      debugPrint("p");
+      if (ctrl == widget.ctrlEnter) {
+        widget.onSendTap.call(
+          _textEditingController.text.trim(),
+          replyMessage,
+          MessageType.text,
+        );
+        _assignRepliedMessage();
+        _textEditingController.clear();
+      }
     }
   }
 

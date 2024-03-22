@@ -71,7 +71,12 @@ class ChatController {
   /// Used to add message in message list.
   void addMessage(Message message) {
     initialMessageList.add(message);
-    messageStreamController.sink.add(initialMessageList);
+    try {
+      messageStreamController.sink.add(initialMessageList);
+    }
+    catch(e) {
+      debugPrint("error $e");
+    }
   }
 
   /// Function for setting reaction on specific chat bubble

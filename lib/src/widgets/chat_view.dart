@@ -51,6 +51,7 @@ class ChatView extends StatefulWidget {
     this.showTypingIndicator = false,
     this.sendMessageConfig,
     this.onChatListTap,
+    this.ctrlEnter = false,
     required this.chatViewState,
     ChatViewStateConfiguration? chatViewStateConfig,
     this.featureActiveConfig = const FeatureActiveConfig(),
@@ -60,6 +61,8 @@ class ChatView extends StatefulWidget {
             chatViewStateConfig ?? const ChatViewStateConfiguration(),
         super(key: key);
 
+
+  final bool ctrlEnter ;
   /// Provides configuration related to user profile circle avatar.
   final ProfileCircleConfiguration? profileCircleConfig;
 
@@ -256,6 +259,7 @@ class _ChatViewState extends State<ChatView>
                     ),
                   if (featureActiveConfig.enableTextField)
                     SendMessageWidget(
+
                       key: _sendMessageKey,
                       chatController: chatController,
                       sendMessageBuilder: widget.sendMessageBuilder,
@@ -265,6 +269,7 @@ class _ChatViewState extends State<ChatView>
                       onReplyCallback: (reply) => replyMessage.value = reply,
                       onReplyCloseCallback: () =>
                           replyMessage.value = const ReplyMessage(),
+                      ctrlEnter: widget.ctrlEnter,
                     ),
                 ],
               ),
