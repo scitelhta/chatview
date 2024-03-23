@@ -53,7 +53,7 @@ class ChatUITextField extends StatefulWidget {
   final TextEditingController textEditingController;
 
   /// Provides callback when user tap on text field.
-  final VoidCallBack onPressed;
+  final Function(bool o) onPressed;
 
   /// Provides callback once voice is recorded.
   final Function(String?) onRecordingComplete;
@@ -243,7 +243,7 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
                       color: sendMessageConfig?.defaultSendButtonColor ??
                           Colors.green,
                       onPressed: () {
-                        widget.onPressed();
+                        widget.onPressed(true);
                         _inputText.value = '';
                       },
                       icon: sendMessageConfig?.sendButtonIcon ??
@@ -350,6 +350,6 @@ class _ChatUITextFieldState extends State<ChatUITextField> {
       composingStatus.value = TypeWriterStatus.typing;
     });
     _inputText.value = inputText;
-    widget.onPressed();
+    widget.onPressed(false);
   }
 }

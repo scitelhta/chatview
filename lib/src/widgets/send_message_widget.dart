@@ -306,15 +306,15 @@ class SendMessageWidgetState extends State<SendMessageWidget> {
     }
   }
 
-  void _onPressed() {
-    bool ctrl = RawKeyboard.instance.keysPressed.contains(LogicalKeyboardKey.controlLeft);
+  void _onPressed(bool si) {
+    bool ctrl = RawKeyboard.instance.keysPressed.contains(LogicalKeyboardKey.shift);
 
     debugPrint("presed ${_textEditingController.text} $ctrl, ${widget.ctrlEnter}");
 
-    if (_textEditingController.text.isNotEmpty &&
+    if ((_textEditingController.text.isNotEmpty &&
         !_textEditingController.text.startsWith('\n') &&
     _textEditingController.text.endsWith('\n')
-    ) {
+    )||(si)) {
       debugPrint("p");
       if (ctrl == widget.ctrlEnter) {
         widget.onSendTap.call(

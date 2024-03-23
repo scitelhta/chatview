@@ -47,11 +47,12 @@ class MessageTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: isCurrentUser?Alignment.topRight:Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
+
           children: [
             Container(
               padding: const EdgeInsets.all(2),
@@ -62,7 +63,8 @@ class MessageTimeWidget extends StatelessWidget {
                 ),
               ),
               child: Icon(
-                isCurrentUser ? Icons.arrow_forward : Icons.arrow_back,
+             //   isCurrentUser ? Icons.arrow_forward : Icons.arrow_back,
+                Icons.date_range,
                 size: 10,
                 color: messageTimeIconColor ?? Colors.black,
               ),
